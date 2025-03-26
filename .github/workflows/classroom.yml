@@ -1,0 +1,70 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: 'testSummation '
+      id: testsummation
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'testSummation '
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit10Test#testSummation test
+        timeout: 3
+        max-score: 10
+    - name: 'testFactorial '
+      id: testfactorial
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'testFactorial '
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit10Test#testFactorial test
+        timeout: 3
+        max-score: 20
+    - name: 'testMergeSort '
+      id: testmergesort
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'testMergeSort '
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit10Test#testMergeSort test
+        timeout: 3
+        max-score: 25
+    - name: 'testTowerOfHanoi '
+      id: testtowerofhanoi
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'testTowerOfHanoi '
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit10Test#testTowerOfHanoi test
+        timeout: 3
+        max-score: 25
+    - name: 'testPower '
+      id: testpower
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: 'testPower '
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit10Test#testPower test
+        timeout: 3
+        max-score: 20
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TESTSUMMATION_RESULTS: "${{steps.testsummation.outputs.result}}"
+        TESTFACTORIAL_RESULTS: "${{steps.testfactorial.outputs.result}}"
+        TESTMERGESORT_RESULTS: "${{steps.testmergesort.outputs.result}}"
+        TESTTOWEROFHANOI_RESULTS: "${{steps.testtowerofhanoi.outputs.result}}"
+        TESTPOWER_RESULTS: "${{steps.testpower.outputs.result}}"
+      with:
+        runners: testsummation,testfactorial,testmergesort,testtowerofhanoi,testpower
