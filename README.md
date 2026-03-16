@@ -1,77 +1,65 @@
-# Unit 10 - Recursion and JUnit Tests
+# Unit 10: Recursion
 
-This project is designed to help you understand key recursion concepts in Java, including:
-- Using recursion to solve mathematical and sorting problems
-- Writing recursive methods with base cases
-- Understanding and utilizing the call stack
+AP Computer Science A
 
-## Project Structure
+## Overview
 
-- **Unit10.java**: This file contains several recursive methods that you need to implement. You will work on methods like `summation`, `factorial`, `mergeSort`, `towerOfHanoi`, and `power`, each of which must use recursion.
-- **Unit10Test.java**: This file contains JUnit tests to verify your understanding of recursive principles. Once you've completed the tasks in `Unit10.java`, the tests will help you confirm that your implementations are correct.
+This project covers **Unit 10: Recursion** concepts including recursive method design, base cases, recursive cases, and classic algorithms. Implement the 5 methods in `Unit10.java` using recursion (no loops!) and run the provided JUnit tests to verify your work.
 
 ## Getting Started
 
-### Prerequisites
+### Option 1: GitHub Codespaces (Recommended)
 
-Make sure you have the following tools installed:
-- **Java** (JDK 8 or later)
-- **Maven** (for managing dependencies and running tests)
+1. Click the green **Code** button on this repository
+2. Select the **Codespaces** tab
+3. Click **Create codespace on main**
+4. Wait for the environment to build (~2 minutes the first time)
+5. Start coding in `src/main/java/com/csplusplus/Unit10.java`
 
-### Instructions
+> **Note:** If the Java extension shows errors on first load, press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows) and run **"Developer: Reload Window"**. This is a one-time setup step.
 
-1. Open `Unit10.java` located in the `src/main/java/com/csplusplus` directory.
-2. Implement each method using recursion as instructed by the comments.
-3. Once you've completed the implementation, run the JUnit tests to verify your solutions.
+### Option 2: Local Development
 
-### Test Coverage
+1. Accept the assignment via the GitHub Classroom link
+2. Clone the repository using GitHub Desktop
+3. Open the project in your IDE
+4. **Requirements:** Java 17+, Maven 3.x
 
-The tests in `Unit10Test.java` cover the following topics:
+## Running Tests
 
-1. **Summation (10 points)**:
-   - Tests a recursive summation method, verifying that the method adds integers from `1` to `n` correctly, including edge cases.
+Run all tests:
+```
+mvn test
+```
 
-2. **Factorial (20 points)**:
-   - Checks the factorial method, ensuring that it handles `n!` correctly, including edge cases like `n = 0` and negative inputs.
+Run a single test:
+```
+mvn -Dtest=Unit10Test#testSummation test
+```
 
-3. **Merge Sort (25 points)**:
-   - Verifies a recursive implementation of the merge sort algorithm, testing sorted arrays, single-element arrays, and empty arrays for correctness.
+## Scoring
 
-4. **Tower of Hanoi (25 points)**:
-   - Tests a recursive solution to the Tower of Hanoi problem. Ensures that the moves generated for 1, 2, and 3 disks follow the correct sequence. 
+| # | Method | Points | Concepts |
+|---|--------|--------|----------|
+| 1 | `summation(int n)` | 10 | Simple recursion |
+| 2 | `factorial(int n)` | 20 | Recursion, multiplication |
+| 3 | `mergeSort(int[])` | 25 | Divide and conquer |
+| 4 | `towerOfHanoi(int, char, char, char)` | 25 | Problem decomposition |
+| 5 | `power(int, int)` | 20 | Exponentiation |
+| | **Total** | **100** | |
 
-5. **Power (20 points)**:
-   - Checks the recursive power method, verifying `base^exponent` calculations, including handling of zero exponents and negative edge cases.
+## Common Mistakes
 
-### Key Concepts
+- Missing or incorrect base case (causes StackOverflowError)
+- Not making the problem smaller in the recursive case
+- Using loops instead of recursion
+- Confusing the order of operations in Tower of Hanoi
+- Forgetting edge cases (n=0, empty arrays)
 
-- **Recursion**: A method that calls itself to solve a problem by breaking it down into simpler, smaller instances.
-- **Base Case**: The condition that stops the recursion, ensuring that the method does not call itself indefinitely.
-- **Call Stack**: The stack that tracks active methods during execution, including local variables and return points, which is critical in understanding recursion.
+## Autograding
 
-### Point Breakdown
+Your code is automatically graded when you push to GitHub. Check the **Actions** tab to see your score.
 
-The tests in `Unit10Test.java` are worth a total of **100 points**:
+## Contact
 
-| Method            | Points |
-|-------------------|--------|
-| Summation         | 10     |
-| Factorial         | 20     |
-| Merge Sort        | 25     |
-| Tower of Hanoi    | 25     |
-| Power             | 20     |
-| **Total**         | **100** |
-
-### Additional Resources
-
-- [Oracle Java Documentation - Recursion](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/recursion.html)
-- [Oracle Java Documentation - The Call Stack](https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html)
-- [JUnit Documentation](https://junit.org/junit5/docs/current/user-guide/)
-
----
-
-## Support
-
-If you encounter any issues or have questions about the assignment, please reach out during office hours or post in the course discussion forum.
-
-For additional assistance, contact: **Kevin** at [kevin@csplusplus.com](mailto:kevin@csplusplus.com).
+For questions, contact [kevin@csplusplus.com](mailto:kevin@csplusplus.com)
